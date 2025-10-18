@@ -18,9 +18,13 @@
                 <@passwordCommons.logoutOtherSessions/>
 
                 <@buttons.actionGroup horizontal=true>
-                    <@buttons.button id="kc-submit" label="doSubmit" class=["btn-primary","w-100"]/>
+                    <@buttons.button id="kc-submit" label="doSubmit" class=["btn-primary","w-100","btn-lg","rounded-pill"]>
+                        <i class="bi bi-envelope-check me-2"></i>${msg("doSubmit")}
+                    </@buttons.button>
                     <#if isAppInitiatedAction??>
-                        <@buttons.button id="kc-cancel" label="doCancel" class=["btn-secondary","w-100"] name="cancel-aia" value="true"/>
+                        <@buttons.button id="kc-cancel" label="doCancel" class=["btn-secondary","w-100","btn-lg","rounded-pill"]>
+                            <i class="bi bi-x-circle me-2"></i>${msg("doCancel")}
+                        </@buttons.button>
                     </#if>
                 </@buttons.actionGroup>
             </div>
