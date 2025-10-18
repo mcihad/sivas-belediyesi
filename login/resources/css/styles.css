@@ -1,0 +1,321 @@
+/* Modern Bootstrap-based Keycloak Theme */
+:root {
+    --keycloak-primary: #0d6efd;
+    --keycloak-secondary: #6c757d;
+    --keycloak-success: #198754;
+    --keycloak-danger: #dc3545;
+    --keycloak-warning: #ffc107;
+    --keycloak-info: #0dcaf0;
+    --keycloak-gradient: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    --keycloak-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+/* Dark mode variables */
+[data-bs-theme="dark"] {
+    --keycloak-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    --keycloak-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Body background with gradient */
+body {
+    background: var(--keycloak-gradient) !important;
+    background-attachment: fixed !important;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Card styling */
+.card {
+    box-shadow: var(--keycloak-shadow);
+    border: none !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+[data-bs-theme="dark"] .card {
+    background: rgba(33, 37, 41, 0.95);
+}
+
+/* Header styling */
+#kc-header-wrapper {
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form controls */
+.form-control {
+    border-radius: 8px;
+    padding: 12px 16px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--keycloak-primary);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+[data-bs-theme="dark"] .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+[data-bs-theme="dark"] .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--keycloak-primary);
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--keycloak-primary), #0b5ed7);
+    border: none;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+}
+
+.btn-outline-secondary {
+    border: 2px solid #6c757d;
+    color: #6c757d;
+    background: transparent;
+}
+
+.btn-outline-secondary:hover {
+    background: #6c757d;
+    transform: translateY(-1px);
+}
+
+/* Input groups */
+.input-group .btn {
+    border-radius: 0 8px 8px 0;
+}
+
+.input-group .form-control {
+    border-radius: 8px 0 0 8px;
+}
+
+/* Alert styling */
+.alert {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.alert-danger {
+    background: linear-gradient(45deg, #dc3545, #c82333);
+    color: white;
+}
+
+.alert-success {
+    background: linear-gradient(45deg, #198754, #157347);
+    color: white;
+}
+
+.alert-warning {
+    background: linear-gradient(45deg, #ffc107, #e0a800);
+    color: #212529;
+}
+
+.alert-info {
+    background: linear-gradient(45deg, #0dcaf0, #0baccc);
+    color: white;
+}
+
+/* Form floating labels */
+.form-floating>label {
+    font-weight: 500;
+    color: #6c757d;
+}
+
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label {
+    color: var(--keycloak-primary);
+    font-weight: 600;
+}
+
+/* Card header gradient */
+.card-header {
+    background: linear-gradient(45deg, var(--keycloak-primary), #0b5ed7) !important;
+    border: none !important;
+}
+
+/* Footer styling */
+.card-footer {
+    border: none !important;
+    background: rgba(248, 249, 250, 0.8) !important;
+}
+
+[data-bs-theme="dark"] .card-footer {
+    background: rgba(33, 37, 41, 0.8) !important;
+}
+
+/* Form validation */
+.is-invalid {
+    border-color: var(--keycloak-danger) !important;
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25) !important;
+}
+
+.invalid-feedback {
+    font-weight: 500;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Animation for page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .card {
+        margin: 1rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Social providers styling */
+#kc-social-providers .btn {
+    border-radius: 12px;
+    padding: 12px;
+    margin: 4px;
+    transition: all 0.3s ease;
+}
+
+#kc-social-providers .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Password visibility toggle */
+.input-group .btn[data-password-toggle] {
+    border-left: none;
+    border-color: #e9ecef;
+}
+
+.input-group .btn[data-password-toggle]:hover {
+    background-color: #f8f9fa;
+    border-color: #e9ecef;
+}
+
+[data-bs-theme="dark"] .input-group .btn[data-password-toggle] {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+[data-bs-theme="dark"] .input-group .btn[data-password-toggle]:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Dark mode theme toggle button */
+.btn-outline-light {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Loading spinner for better UX */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Improved accessibility */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Focus indicators */
+.btn:focus,
+.form-control:focus,
+.form-check-input:focus {
+    outline: 2px solid var(--keycloak-primary);
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white !important;
+    }
+
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+
+    .btn {
+        background: white !important;
+        color: black !important;
+        border: 1px solid black !important;
+    }
+}
+
+/* Footer styling */
+.login-footer p {
+    margin-bottom: 0.25rem !important;
+}
