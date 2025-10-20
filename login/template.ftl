@@ -30,7 +30,9 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="color-scheme" content="light${darkMode?then(' dark', '')}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1, user-scalable=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <#if properties.meta?has_content>
         <#list properties.meta?split(' ') as meta>
@@ -205,11 +207,12 @@
     </script>
 </head>
 
-<body id="keycloak-bg" class="min-vh-100 d-flex align-items-center justify-content-center bg-light" data-bs-theme="auto" data-page-id="login-${pageId}">
+<body id="keycloak-bg" class="min-vh-100 d-flex align-items-center justify-content-center bg-light" data-bs-theme="auto" data-page-id="login-${pageId}" style="padding: env(safe-area-inset-bottom) env(safe-area-inset-right) 0 env(safe-area-inset-left);">
 
-<div style="position: fixed; top: 1rem; right: 1rem; z-index: 1050;">
-    <button id="theme-toggle-btn" type="button" class="btn btn-outline-secondary btn-sm" aria-label="Toggle theme">
-        <i id="theme-toggle-icon" class="bi"></i> </button>
+<div style="position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1050;">
+    <button id="theme-toggle-btn" type="button" class="btn btn-outline-secondary" aria-label="Toggle theme" title="Tema değiştir">
+        <i id="theme-toggle-icon" class="bi"></i>
+    </button>
 </div>
 
 <div class="container-fluid">
@@ -218,24 +221,24 @@
 
     <main class="card shadow-md border-0 rounded-4 overflow-hidden">
       
-      <div class="p-3 p-md-4 bg-body-tertiary">
+      <div class="p-2 p-md-3 bg-body-tertiary">
           <div class="d-flex align-items-center">
               <div class="flex-shrink-0">
-                  <img src="${url.resourcesPath}/img/sivaslogo.png" alt="${(realm.displayName!'')} Logo" style="height: 40px; width: auto; margin-right: 1rem;" />
+                  <img src="${url.resourcesPath}/img/sivaslogo.png" alt="${(realm.displayName!'')} Logo" style="height: 36px; width: auto; margin-right: 0.75rem;" />
               </div>
               
               <div class="flex-grow-1">
-                  <div id="kc-header-wrapper" class="h5 fw-bold text-primary mb-0">
+                  <div id="kc-header-wrapper" class="h6 fw-bold text-primary mb-0">
                       ${kcSanitize(msg("loginTitleHtml",(realm.displayNameHtml!'')))?no_esc}
                   </div>
-                  <h1 class="h6 mb-0 text-muted" id="kc-page-title">
+                  <h1 class="text-muted" id="kc-page-title" style="font-size: 0.85rem; margin: 0;">
                       <#nested "header">
                   </h1>
               </div>
           </div>
       </div>
 
-      <div class="card-body p-3 p-md-4">
+      <div class="card-body p-2 p-md-3">
         
         <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
             <#if displayRequiredFields>
@@ -305,31 +308,30 @@
           </div>
       </div>
 
-      <div class="card-footer bg-body-tertiary py-3">
-          <div class="d-flex justify-content-center align-items-center">
+      <div class="card-footer bg-body-tertiary py-2 px-2 px-md-3">
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
               <div class="kc-footer-links small">
                   <@loginFooter.content/>
               </div>
 
-              <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
-              <div class="d-inline-block">
-                <select
-                  aria-label="${msg("languages")}"
-                  id="login-select-toggle"
-                  class="form-select form-select-sm"
-                  onchange="if (this.value) window.location.href=this.value"
-                >
-                  <#list locale.supported?sort_by("label") as l>
-                    <option
-                      value="${l.url}"
-                      ${(l.languageTag == locale.currentLanguageTag)?then('selected','')}
-                    >
-                      ${l.label}
-                    </option>
-                  </#list>
-                </select>
+              <div class="d-flex align-items-center gap-2">
+                  <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
+                  <select
+                    aria-label="${msg("languages")}"
+                    id="login-select-toggle"
+                    onchange="if (this.value) window.location.href=this.value"
+                  >
+                    <#list locale.supported?sort_by("label") as l>
+                      <option
+                        value="${l.url}"
+                        ${(l.languageTag == locale.currentLanguageTag)?then('selected','')}
+                      >
+                        ${l.label}
+                      </option>
+                    </#list>
+                  </select>
+                  </#if>
               </div>
-              </#if>
           </div>
       </div>
     </main>

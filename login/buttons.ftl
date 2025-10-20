@@ -1,6 +1,6 @@
 <#macro actionGroup horizontal=false>
-  <div class="mb-3">
-    <div class="d-flex gap-2 <#if horizontal>flex-nowrap<#else>flex-wrap</#if>">
+  <div class="mb-2">
+    <div class="d-grid gap-2 <#if horizontal>d-sm-flex</#if>">
       <#nested>
     </div>
   </div>

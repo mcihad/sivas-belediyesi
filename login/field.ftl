@@ -1,6 +1,6 @@
 <#macro group name label error="" required=false>
 
-<div class="mb-3">
+<div class="mb-2">
     <label for="${name}" class="form-label">
         <span>
             ${label}
@@ -44,7 +44,7 @@
     <div class="input-group">
       <input id="${name}" name="${name}" value="${value}" type="password" class="form-control <#if error?has_content>is-invalid</#if>" autocomplete="${autocomplete}" <#if autofocus>autofocus</#if>
               aria-invalid="<#if error?has_content>true</#if>"/>
-      <button class="btn btn-outline-secondary" type="button" aria-label="${msg('showPassword')}"
+      <button class="btn btn-outline-secondary" type="button" style="padding: 10px 11px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;" aria-label="${msg('showPassword')}"
               aria-controls="${name}" data-password-toggle
               data-icon-show="fa-eye fas" data-icon-hide="fa-eye-slash fas"
               data-label-show="${msg('showPassword')}" data-label-hide="${msg('hidePassword')}" id="${name}-show-password">
