@@ -255,7 +255,7 @@
           </div>
       </div>
 
-      <div class="card-footer bg-body-tertiary py-3 px-2 px-md-4" style="margin-top: auto; padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 10px)) !important;">
+      <div class="card-footer bg-body-tertiary py-3 px-2 px-md-4" style="margin-top: auto; padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 15px)) !important;">
           <div class="d-flex flex-column align-items-center justify-content-center gap-2">
               <div class="kc-footer-links small text-center">
                   <@loginFooter.content/>

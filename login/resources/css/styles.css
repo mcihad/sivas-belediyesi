@@ -358,7 +358,7 @@ body {
 
     .card-footer {
         margin-top: auto !important;
-        padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 10px)) !important;
+        padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 15px)) !important;
     }
 
     .btn {
