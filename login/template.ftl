@@ -31,6 +31,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="color-scheme" content="light${darkMode?then(' dark', '')}">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -65,19 +66,16 @@
     </script>
     <#if darkMode>
       <script type="module" async blocking="render">
-          const DARK_MODE_CLASS = "${properties.kcDarkModeClass}";
           const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
           updateDarkMode(mediaQuery.matches);
           mediaQuery.addEventListener("change", (event) => updateDarkMode(event.matches));
 
           function updateDarkMode(isEnabled) {
-            const { classList } = document.documentElement;
-
             if (isEnabled) {
-              classList.add(DARK_MODE_CLASS);
+              document.documentElement.setAttribute('data-bs-theme', 'dark');
             } else {
-              classList.remove(DARK_MODE_CLASS);
+              document.documentElement.setAttribute('data-bs-theme', 'light');
             }
           }
       </script>
