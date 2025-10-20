@@ -349,7 +349,7 @@ body {
 
     main.card {
         margin: 0 !important;
-        border-radius: 0 !important;
+        /**border-radius: 0 !important;*/
         flex: 0 1 auto;
         display: flex;
         flex-direction: column;
