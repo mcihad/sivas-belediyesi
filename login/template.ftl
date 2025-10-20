@@ -136,90 +136,39 @@
     </script>
 
     <script src="${url.resourcesPath}/js/bootstrap.bundle.min.js"></script>
+    <script src="${url.resourcesPath}/js/mobile-optimization.js"></script>
 
     <script>
-      // Dark mode management
-      const getStoredTheme = () => localStorage.getItem('theme')
-      const setStoredTheme = theme => localStorage.setItem('theme', theme)
-
+      // Dark mode management - Auto detect based on system preference
       const getPreferredTheme = () => {
-        const storedTheme = getStoredTheme()
-        if (storedTheme) {
-          return storedTheme
-        }
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
       }
 
       const setTheme = theme => {
-        if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        if (theme === 'dark') {
           document.documentElement.setAttribute('data-bs-theme', 'dark')
         } else {
-          document.documentElement.setAttribute('data-bs-theme', theme)
+          document.documentElement.setAttribute('data-bs-theme', 'light')
         }
       }
 
       setTheme(getPreferredTheme())
 
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-        const storedTheme = getStoredTheme()
-        if (storedTheme !== 'light' && storedTheme !== 'dark') {
-          setTheme(getPreferredTheme())
-        }
+        setTheme(getPreferredTheme())
       })
-
-      // Tema değiştirme butonunu yöneten kod
-      document.addEventListener('DOMContentLoaded', () => {
-        const themeToggleBtn = document.getElementById('theme-toggle-btn');
-        const themeToggleIcon = document.getElementById('theme-toggle-icon');
-
-        if (themeToggleBtn && themeToggleIcon) {
-          // Sayfa yüklendiğinde doğru ikonu ayarla
-          const updateIcon = (theme) => {
-            if (theme === 'dark') {
-              themeToggleIcon.className = 'bi bi-sun-fill';
-            } else {
-              themeToggleIcon.className = 'bi bi-moon-fill';
-            }
-          };
-
-          // İlk ikonu ayarla
-          updateIcon(getPreferredTheme());
-
-          // Butona tıklama olayı ekle
-          themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = getPreferredTheme();
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            setStoredTheme(newTheme);
-            setTheme(newTheme);
-            updateIcon(newTheme);
-          });
-
-          // OS tercihi değişirse ve tema 'auto' ise ikonu güncelle
-          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-              if (!getStoredTheme() || getStoredTheme() === 'auto') {
-                  updateIcon(getPreferredTheme());
-              }
-          });
-        }
-      });
     </script>
 </head>
 
-<body id="keycloak-bg" class="min-vh-100 d-flex align-items-center justify-content-center bg-light" data-bs-theme="auto" data-page-id="login-${pageId}" style="padding: env(safe-area-inset-bottom) env(safe-area-inset-right) 0 env(safe-area-inset-left);">
+<body id="keycloak-bg" class="min-vh-100 d-flex align-items-center justify-content-center bg-light" data-bs-theme="auto" data-page-id="login-${pageId}" style="padding: env(safe-area-inset-bottom) env(safe-area-inset-right) 0 env(safe-area-inset-left); margin: 0; overflow: hidden;">
 
-<div style="position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1050;">
-    <button id="theme-toggle-btn" type="button" class="btn btn-outline-secondary" aria-label="Toggle theme" title="Tema değiştir">
-        <i id="theme-toggle-icon" class="bi"></i>
-    </button>
-</div>
+<div class="container-fluid" style="height: 100vh; display: flex; flex-direction: column; padding: 0; margin: 0;">
+  <div class="row justify-content-center" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0;">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4" style="display: flex; flex-direction: column; padding: 0; margin: 0;">
 
-<div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-
-    <main class="card shadow-md border-0 rounded-4 overflow-hidden">
+    <main class="card shadow-md border-0 rounded-4 overflow-hidden" style="flex: 1; display: flex; flex-direction: column; margin: 0; ">
       
-      <div class="p-2 p-md-3 bg-body-tertiary">
+      <div class="p-2 p-md-3 kc-header-bg">
           <div class="d-flex align-items-center">
               <div class="flex-shrink-0">
                   <img src="${url.resourcesPath}/img/sivaslogo.png" alt="${(realm.displayName!'')} Logo" style="height: 36px; width: auto; margin-right: 0.75rem;" />
@@ -236,7 +185,7 @@
           </div>
       </div>
 
-      <div class="card-body p-2 p-md-3">
+      <div class="card-body p-2 p-md-3" style="flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column;">
         
         <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
             <#if displayRequiredFields>
@@ -293,7 +242,7 @@
           </form>
         </#if>
 
-          <div class="mt-4">
+          <div class="mt-4" style="margin-top: auto;">
               <#nested "socialProviders">
 
               <#if displayInfo>
@@ -306,13 +255,13 @@
           </div>
       </div>
 
-      <div class="card-footer bg-body-tertiary py-2 px-2 px-md-3">
-          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-              <div class="kc-footer-links small">
+      <div class="card-footer bg-body-tertiary py-3 px-2 px-md-4" style="margin-top: auto; padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 10px)) !important;">
+          <div class="d-flex flex-column align-items-center justify-content-center gap-2">
+              <div class="kc-footer-links small text-center">
                   <@loginFooter.content/>
               </div>
 
-              <div class="d-flex align-items-center gap-2">
+              <div class="d-flex align-items-center justify-content-center gap-2">
                   <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
                   <select
                     aria-label="${msg("languages")}"
