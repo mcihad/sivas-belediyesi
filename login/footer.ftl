@@ -4,9 +4,6 @@
     <div class="text-center footer-content">
         <p class="footer-title">&copy; ${.now?string("yyyy")} Sivas Belediyesi</p>
         <p class="footer-subtitle">Akıllı Şehir ve Kent Bilgi Sistemleri Müdürlüğü</p>
-        <p class="footer-link">
-            <a href="https://www.sivas.bel.tr" target="_blank" rel="noopener noreferrer">www.sivas.bel.tr</a>
-        </p>
     </div>
 </footer>
 </#macro>

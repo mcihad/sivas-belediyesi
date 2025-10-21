@@ -166,9 +166,9 @@
   <div class="row justify-content-center" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0;">
     <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4" style="display: flex; flex-direction: column; padding: 0; margin: 0;">
 
-    <main class="card shadow-md border-0 rounded-4 overflow-hidden" style="flex: 1; display: flex; flex-direction: column; margin: 0; ">
+    <main class="card shadow-md border-0 rounded-3 overflow-hidden" style="flex: 1; display: flex; flex-direction: column; margin: 0; ">
       
-      <div class="p-2 p-md-3 kc-header-bg">
+      <div class="p-3 p-md-3 kc-header-bg">
           <div class="d-flex align-items-center">
               <div class="flex-shrink-0">
                   <img src="${url.resourcesPath}/img/sivaslogo.png" alt="${(realm.displayName!'')} Logo" style="height: 36px; width: auto; margin-right: 0.75rem;" />
@@ -242,7 +242,7 @@
           </form>
         </#if>
 
-          <div class="mt-4" style="margin-top: auto;">
+          <div class="mt-1" style="margin-top: auto;">
               <#nested "socialProviders">
 
               <#if displayInfo>

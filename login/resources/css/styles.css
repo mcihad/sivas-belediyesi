@@ -76,7 +76,6 @@ body {
     }
 }
 
-/* Card header background - Aesthetic light gradient */
 .kc-header-bg {
     background: linear-gradient(135deg, rgba(30, 77, 123, 0.04) 0%, rgba(42, 95, 163, 0.03) 100%) !important;
     border-bottom: 1px solid rgba(30, 77, 123, 0.08);
@@ -184,6 +183,7 @@ body {
     align-items: stretch;
     width: 100%;
 }
+
 
 .input-group .btn {
     border-radius: 0 6px 6px 0;
